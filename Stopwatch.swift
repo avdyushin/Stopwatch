@@ -1,5 +1,6 @@
 import QuartzCore
 
+
 /**
     ⏱ The `Stopwatch` helps to measuring elapsed time
     between start and stop function calls.
@@ -14,6 +15,13 @@ class Stopwatch {
         Initializer (will start measuring).
     */
     init() {
+        restart()
+    }
+    
+    /**
+        Restart measuring.
+     */
+    func restart() {
         startTime = CACurrentMediaTime()
     }
     
@@ -25,4 +33,10 @@ class Stopwatch {
         let endTime = CACurrentMediaTime()
         return endTime - startTime
     }
+    
 }
+
+extension Stopwatch: CustomStringConvertible {
+    var description: String { return NSString(format: "[%0.4f s]", self.elaspedTime()) as String }
+}
+
